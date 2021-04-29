@@ -1,5 +1,4 @@
-# Lead Time Calculator
-
+# Demo App
 
 # Setup
 ### Build 
