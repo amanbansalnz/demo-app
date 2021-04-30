@@ -34,4 +34,14 @@ public class GlobalControllerExceptionHandler {
         genericErrorResponse.setMessage(ex.getMessage());
         return genericErrorResponse;// Nothing to do
     }
+
+
+    @ExceptionHandler(InvalidRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)  // 409
+    public GenericErrorResponse handleConversion400(InvalidRequestException ex) {
+        GenericErrorResponse genericErrorResponse = new GenericErrorResponse();
+        genericErrorResponse.setCode(ex.getCode());
+        genericErrorResponse.setMessage(ex.getMessage());
+        return genericErrorResponse;// Nothing to do
+    }
 }

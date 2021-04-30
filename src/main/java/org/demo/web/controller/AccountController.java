@@ -13,18 +13,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/user")
+
 @Slf4j
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("/account-details")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public AccountDetailResponse getMemberDetails(@RequestHeader(name = "token") String token) {
 
-        log.info("AccountController register");
+        log.info("AccountController get member details");
 
         MemberDetails memberDetails = accountService.getMemberDetails(token);
 
@@ -33,12 +34,12 @@ public class AccountController {
         accountDetailResponse.setMemberName(memberDetails.getMemberName());
         accountDetailResponse.setPhoneNumber(memberDetails.getPhoneNumber());
 
-        log.info("AccountController register response <<<< with accountDetailResponse={}", accountDetailResponse);
+        log.info("AccountController get member details response <<<< with accountDetailResponse={}", accountDetailResponse);
 
         return accountDetailResponse;
     }
 
-    @PostMapping("/register")
+    @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public AccountDetailResponse register(@RequestBody RegisterRequest registerRequest) {
 

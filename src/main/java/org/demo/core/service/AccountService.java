@@ -5,6 +5,7 @@ import com.google.common.hash.Hashing;
 import lombok.extern.slf4j.Slf4j;
 import org.demo.core.model.MemberDetails;
 import org.demo.web.error.AccessDeniedException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,13 +20,16 @@ public class AccountService {
 
     private static Map<String, MemberDetails> memberDetailMap;
 
+    @Autowired
+    AuthenticationService authenticationService;
+
     public AccountService(){
         memberDetailMap = new HashMap<>();
     }
 
     public MemberDetails register(String memberName, String password, String phoneNumber, String email){
         MemberDetails memberDetails = null;
-        String token = generateHash(memberName, password);
+        String token = generateHash(memberName+password);
         if(!memberDetailMap.containsKey(token)){
             memberDetails =  new MemberDetails(memberName, password, phoneNumber, email);
             memberDetailMap.put(token, memberDetails);
@@ -42,10 +46,6 @@ public class AccountService {
     }
 
     public MemberDetails getMemberDetails(String token) {
-        if(memberDetailMap.containsKey(token)) {
-           return memberDetailMap.get(token);
-        }else{
-            throw new AccessDeniedException(403, "Access Denied");
-        }
+       return authenticationService.validateIsLoggedIn(token);
     }
 }

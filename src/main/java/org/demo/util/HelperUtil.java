@@ -5,11 +5,10 @@ import com.google.common.hash.Hashing;
 
 public class HelperUtil {
 
-    public static String generateHash(String memberName, String password) {
+    public static String generateHash(String value) {
 
         String valueToHash = new StringBuilder("demo")
-                .append(memberName)
-                .append(password)
+                .append(value)
                 .toString();
 
         String identifier = Hashing.sha256()
