@@ -2,7 +2,8 @@ package org.demo.web.error;
 
 public enum ErrorCode {
 
-    APPLICATION_ERROR(0);
+    APPLICATION_ERROR(0),
+    Unauthorized(401);
 
     private int code;
 
