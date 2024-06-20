@@ -1,5 +1,5 @@
 package org.demo.web.controller;
-
+o
 import org.demo.core.service.HealthService;
 import org.demo.web.model.response.LivenessSuccessResponse;
 import org.demo.web.model.response.ReadinessSuccessResponse;
@@ -24,7 +24,8 @@ public class HealthController {
     @GetMapping("/liveness")
     @ResponseStatus(HttpStatus.OK)
     public LivenessSuccessResponse checLiveness() {
-
+	
+	// health controller 
         log.info("HealthController check liveness ");
 
         LivenessSuccessResponse livenessSuccessResponse = new LivenessSuccessResponse();
