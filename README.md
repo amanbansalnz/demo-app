@@ -2,7 +2,7 @@
 
 
 # Setup
-### Build 
+Build 
 
 `mvn clean install`
 
