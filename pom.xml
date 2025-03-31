@@ -4,7 +4,7 @@
 
     <groupId>org</groupId>
     <artifactId>demo-app</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <name>Demo App</name>
     <packaging>jar</packaging>
 
