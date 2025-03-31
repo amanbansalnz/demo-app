@@ -7,7 +7,6 @@
 `mvn clean install`
 
 adding new text 2
-making changes test commit
 
 adding new text
  
